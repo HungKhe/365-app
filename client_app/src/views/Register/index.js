@@ -6,11 +6,22 @@ import { actRegisterForm } from '../../actions/user';
 
 function Register(props) {
     const { user } = props;
-    const [dataform, setDataForm] = useState({});
+    const [dataform, setDataForm] = useState({
+        userEmail: '',
+        userName: '',
+        userPassword: '',
+        userPasswordConfirm: ''
+    });
     const [disableBtn, setDisableBtn] = useState(true);
     const inputHandleChange = function(e){
         const { value, name } = e.target 
         dataform[name] = value;
+        if(dataform.userEmail === '' || dataform.userName === '' 
+        || dataform.userPassword === '' || dataform.userPasswordConfirm === '' 
+        || (dataform.userPassword !== '' && dataform.userPassword !== dataform.userPasswordConfirm))
+            setDisableBtn(true)
+        else
+            setDisableBtn(false)
         setDataForm(dataform);
     }
     const handleSubmit = function(e){
@@ -43,7 +54,7 @@ function Register(props) {
                             </div>
                         </div>
                         <div className="floating-label">
-                            <input onChange={inputHandleChange} required placeholder="Mật khẩu" type="password" name="userPassword" id="userPassword" autoComplete="off" />
+                            <input onChange={inputHandleChange} minlength="6" required placeholder="Mật khẩu" type="password" name="userPassword" id="userPassword" autoComplete="off" />
                             <label htmlFor="password">Mật khẩu:</label>
                             <div className="icon">
                                 <svg className="svg-icon" viewBox="0 0 20 20">
@@ -52,7 +63,7 @@ function Register(props) {
                             </div>
                         </div>
                         <div className="floating-label">
-                            <input onChange={inputHandleChange} required placeholder="Nhập lại mật khẩu" type="password" name="userPasswordConfirm" id="userPasswordConfirm" autoComplete="off" />
+                            <input onChange={inputHandleChange} minlength="6" required placeholder="Nhập lại mật khẩu" type="password" name="userPasswordConfirm" id="userPasswordConfirm" autoComplete="off" />
                             <label htmlFor="password">Nhập lại mật khẩu:</label>
                             <div className="icon">
                                 <svg className="svg-icon" viewBox="0 0 20 20">
