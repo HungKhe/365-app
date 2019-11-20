@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const userCtrl = require('../ctrl/user.ctrl')
 
 router.route('/register')
-    .get(authToken.initGetCodeToken);
+    .post(userCtrl.initRegisterMember);
 
 // router.route('/promotion')
 //     .get(promotion.initGetPromotion)
