@@ -1,14 +1,14 @@
 const db = require('./model');
 const schema = {
-    user_name: { type: mongoose.SchemaTypes.String, required: true },
-    email: { type: mongoose.SchemaTypes.String, required: true },
+    user_name: { type: String, required: true },
+    email: { type: String, required: true },
     password: { 
-        type: mongoose.SchemaTypes.String, 
+        type: String, 
         required: true, 
         select: false
     }
 };
 const collectionName = "user";
-const userSchema = new Schema(schema);
+const userSchema = db.Schema(schema);
 const User = db.model(collectionName, userSchema);
 module.exports = User;

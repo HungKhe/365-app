@@ -10,17 +10,20 @@ module.exports = {
         const { body } = req;
         const item = await initFindUser(body.userName).then(r => r);
         console.log('Item: ', item)
-        bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(body.userPassword, salt, function(err, hash) {
-                const newUser = new User({
-                    user_name: body.userName,
-                    email: body.userEmail,
-                    password: hash
-                })
-                newUser.save()
-                    .then( newUser => res.json(newUser))
-                    .catch( err => console.log(err))
-            });
-        });
+        res.status(200).json({
+            message: 'abc'
+        })
+        // bcrypt.genSalt(10, function(err, salt) {
+        //     bcrypt.hash(body.userPassword, salt, function(err, hash) {
+        //         const newUser = new User({
+        //             user_name: body.userName,
+        //             email: body.userEmail,
+        //             password: hash
+        //         })
+        //         newUser.save()
+        //             .then( newUser => res.json(newUser))
+        //             .catch( err => console.log(err))
+        //     });
+        // });
     }
 }
