@@ -27,7 +27,6 @@ function Register(props) {
     const handleSubmit = function(e){
         e.preventDefault();
         onSubmitFormRegister(dataform);
-        console.log('data: ', dataform)
     }
     return (
         <div className="registerPage authPage">
@@ -59,7 +58,7 @@ function Register(props) {
                             </div>
                         </div>
                         <div className="floating-label">
-                            <input onChange={inputHandleChange} minlength="6" required placeholder="Mật khẩu" type="password" name="userPassword" id="userPassword" autoComplete="off" />
+                            <input onChange={inputHandleChange} minLength="6" required placeholder="Mật khẩu" type="password" name="userPassword" id="userPassword" autoComplete="off" />
                             <label htmlFor="password">Mật khẩu:</label>
                             <div className="icon">
                                 <svg className="svg-icon" viewBox="0 0 20 20">
@@ -68,7 +67,7 @@ function Register(props) {
                             </div>
                         </div>
                         <div className="floating-label">
-                            <input onChange={inputHandleChange} minlength="6" required placeholder="Nhập lại mật khẩu" type="password" name="userPasswordConfirm" id="userPasswordConfirm" autoComplete="off" />
+                            <input onChange={inputHandleChange} minLength="6" required placeholder="Nhập lại mật khẩu" type="password" name="userPasswordConfirm" id="userPasswordConfirm" autoComplete="off" />
                             <label htmlFor="password">Nhập lại mật khẩu:</label>
                             <div className="icon">
                                 <svg className="svg-icon" viewBox="0 0 20 20">

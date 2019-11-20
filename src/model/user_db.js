@@ -9,6 +9,6 @@ const schema = {
     }
 };
 const collectionName = "user";
-const userSchema = db.Schema(schema);
+const userSchema = new db.Schema(schema);
 const User = db.model(collectionName, userSchema);
 module.exports = User;

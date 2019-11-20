@@ -3,7 +3,7 @@ const router = express.Router();
 const userCtrl = require('../ctrl/user.ctrl')
 
 router.route('/register')
-    .get(userCtrl.initRegisterMember);
+    .post(userCtrl.initRegisterMember);
 
 // router.route('/promotion')
 //     .get(promotion.initGetPromotion)
