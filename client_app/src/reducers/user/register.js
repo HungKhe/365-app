@@ -1,4 +1,4 @@
-import * as Types from '../constants/user';
+import * as Types from '../../constants/user';
 const initialState = {
     error: false,
     message: '',

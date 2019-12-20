@@ -36,14 +36,13 @@ module.exports = {
         console.log(body);
         const item = await initFindUser(body.userName).then(r => r);
         if(item){
-            res.status(200).json({
+            res.json({
                 error: true,
                 message: 'Lỗi... Tên đăng nhập đã tồn tại!',
                 data: null
             });
             return false;
         }
-        console.log('Item: ', item)
         bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(body.userPassword, salt, function(err, hash) {
                 const newUser = new User({

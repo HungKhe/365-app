@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import EffectButton from '../../components/snippets/EffectButton';
+import SpinnerLoading from '../../components/snippets/SpinnerLoading';
 import { actRegisterForm } from '../../actions/user';
 
 function Register(props) {
@@ -28,6 +29,10 @@ function Register(props) {
         e.preventDefault();
         onSubmitFormRegister(dataform);
     }
+    useEffect(() => {
+        if(user.data)
+            props.history.push('/');
+    });
     return (
         <div className="registerPage authPage">
             <div className="formSecsion">
@@ -75,6 +80,13 @@ function Register(props) {
                                 </svg>
                             </div>
                         </div>
+                        {
+                            user.error ? 
+                                <div className="floating-label error">
+                                    <p>{ user.message }</p>
+                                </div>
+                            : ''
+                        }
                         <div className="floating-label send">
                             <EffectButton disabled={disableBtn} nameButton="Đăng ký"/>
                         </div>
@@ -84,15 +96,16 @@ function Register(props) {
                     </form>
                 </div>
             </div>
+            <SpinnerLoading isShow={user.loading} />
         </div>
     );
 }
 const mapStateToProps = state => ({
-    user: state.userReducer
+    user: state.userRegister
 })
 const mapDispatchToProps = (dispath) =>{
     return {
         onSubmitFormRegister: (data) => dispath(actRegisterForm(data))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Register));
