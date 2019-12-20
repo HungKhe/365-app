@@ -6,4 +6,10 @@ function* rootSaga(){
     ])
 }
 
+// function* rootSaga(){
+//     yield all([
+//         fork(userSaga)
+//     ])
+// }
+
 export default rootSaga;
